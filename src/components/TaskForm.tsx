@@ -8,6 +8,7 @@ interface TaskFormProps {
     assignedTo: number;
     deadline: string;
     category: string;
+    completed: boolean;
   }) => void;
   members: FamilyMember[];
 }
@@ -28,7 +29,8 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask, members }) => {
     if (formData.title.trim() && formData.deadline) {
       onAddTask({
         ...formData,
-        deadline: new Date(formData.deadline).toISOString()
+        deadline: new Date(formData.deadline).toISOString(),
+        completed: false
       });
       setFormData({
         title: '',

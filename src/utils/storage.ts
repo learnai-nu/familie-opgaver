@@ -3,11 +3,11 @@ import { FamilyData } from '../types';
 const STORAGE_KEY = 'familyChoresData';
 
 export const getInitialData = (): FamilyData => ({
-  currentUser: { id: 1, name: "Emma", age: 8, role: "child", points: 45 },
+  currentUser: { id: 1, name: "Josefine", age: 8, role: "child", points: 45 },
   members: [
-    { id: 1, name: "Emma", age: 8, role: "child", points: 45 },
-    { id: 2, name: "Lucas", age: 12, role: "child", points: 78 },
-    { id: 3, name: "Lars", age: 42, role: "parent", points: 0 }
+    { id: 1, name: "Josefine", age: 8, role: "child", points: 45 },
+    { id: 2, name: "Lilly", age: 12, role: "child", points: 78 },
+    { id: 3, name: "William", age: 42, role: "parent", points: 0 }
   ],
   tasks: [
     { 
@@ -45,7 +45,7 @@ export const getInitialData = (): FamilyData => ({
     { id: 4, title: "Zoo-besøg", price: 200, type: "family", icon: "🦁" }
   ],
   communalPoints: 25,
-  communalGoal: { title: "Zoo-tur", target: 200 }
+  communalGoal: { title: "Biograftur", target: 500 }
 });
 
 export const loadData = (): FamilyData => {

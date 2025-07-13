@@ -37,9 +37,7 @@ const RewardShop: React.FC<RewardShopProps> = ({
     }
   };
 
-  const getAvailablePoints = (reward: Reward) => {
-    return reward.type === 'individual' ? currentUser.points : communalPoints;
-  };
+
 
   const RewardCard: React.FC<{ reward: Reward }> = ({ reward }) => {
     const affordable = canAfford(reward);
