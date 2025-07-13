@@ -13,7 +13,10 @@ const familyMembers = [
 const initialTasks = [
   { id: 1, title: 'Ryd op på værelset', description: 'Ryd op på dit værelse og gør det rent', points: 10, deadline: '2025-07-13T18:00', completed: false, assignedTo: 1, frequency: 'once', category: '10-13', weekday: 'monday', createdBy: 4 },
   { id: 2, title: 'Tøm opvaskemaskine', description: 'Tøm opvaskemaskinen og ryd op', points: 5, deadline: '2025-07-14T16:00', completed: false, assignedTo: 2, frequency: 'daily', category: '5-9', weekday: 'monday', createdBy: 4 },
-  { id: 3, title: 'Støvsug stue', description: 'Støvsug hele stuen grundigt', points: 15, deadline: '2025-07-15T12:00', completed: false, assignedTo: 3, frequency: 'weekly', category: '5-9', weekday: 'saturday', createdBy: 5 }
+  { id: 3, title: 'Støvsug stue', description: 'Støvsug hele stuen grundigt', points: 15, deadline: '2025-07-15T12:00', completed: false, assignedTo: 3, frequency: 'weekly', category: '5-9', weekday: 'saturday', createdBy: 5 },
+  { id: 4, title: 'Lav aftensmad', description: 'Lav en sund og lækker aftensmad til familien', points: 20, deadline: '2025-07-13T17:00', completed: false, assignedTo: 4, frequency: 'weekly', category: '14+', weekday: 'wednesday', createdBy: 5 },
+  { id: 5, title: 'Vask tøj', description: 'Vask, tør og fold tøj for hele familien', points: 25, deadline: '2025-07-14T14:00', completed: false, assignedTo: 5, frequency: 'weekly', category: '14+', weekday: 'sunday', createdBy: 4 },
+  { id: 6, title: 'Ryd op i køkken', description: 'Ryd op og gør rent i køkkenet', points: 15, deadline: '2025-07-13T19:00', completed: false, assignedTo: 4, frequency: 'daily', category: '14+', weekday: 'monday', createdBy: 5 }
 ] as Array<{
   id: number;
   title: string;
@@ -434,7 +437,7 @@ const FamilieApp: React.FC = () => {
   const [currentView, setCurrentView] = useState('dashboard');
   const [currentUser, setCurrentUser] = useState(familyMembers[0]);
   const [tasks, setTasks] = useState(initialTasks);
-  const [userPoints, setUserPoints] = useState<Record<number, number>>({ 1: 89, 2: 52, 3: 35, 4: 120, 5: 95 });
+  const [userPoints, setUserPoints] = useState<Record<number, number>>({ 1: 89, 2: 52, 3: 35, 4: 75, 5: 60 });
   const [communalPoints, setCommunalPoints] = useState(125);
   const [showAnimation, setShowAnimation] = useState(false);
   const [animationPoints, setAnimationPoints] = useState(0);
@@ -502,7 +505,11 @@ const FamilieApp: React.FC = () => {
     { id: 1, title: 'Ekstra fredagsslik', price: 20, type: 'individual' as const, icon: '🍬' },
     { id: 2, title: 'Filmaften', price: 35, type: 'individual' as const, icon: '🎬' },
     { id: 3, title: 'Biograftur', price: 150, type: 'family' as const, icon: '🎭' },
-    { id: 4, title: 'Zoo-besøg', price: 200, type: 'family' as const, icon: '🦁' }
+    { id: 4, title: 'Zoo-besøg', price: 200, type: 'family' as const, icon: '🦁' },
+    { id: 5, title: 'Aftensmad ude', price: 50, type: 'individual' as const, icon: '🍽️' },
+    { id: 6, title: 'Massage', price: 80, type: 'individual' as const, icon: '💆‍♀️' },
+    { id: 7, title: 'Købmandstur uden børn', price: 30, type: 'individual' as const, icon: '🛒' },
+    { id: 8, title: 'Ferie', price: 500, type: 'family' as const, icon: '🏖️' }
   ]);
 
   // Load data from localStorage on mount
@@ -786,7 +793,7 @@ const FamilieApp: React.FC = () => {
           <div style={{...styles.pointsIcon, fontSize: '2.5rem', marginBottom: '0.75rem'}}>⭐</div>
           <div style={{...styles.pointsValue, fontSize: '2.5rem', color: '#7c3aed'}}>{userPoints[currentUser.id] || 0}</div>
           <div style={{...styles.pointsLabel, fontSize: '1rem', fontWeight: '600'}}>Mine Point</div>
-          {currentUser.role === 'child' && (userPoints[currentUser.id] || 0) > 0 && (
+          {(userPoints[currentUser.id] || 0) > 0 && (
             <button 
               onClick={() => setShowDonateModal(true)}
               style={{
@@ -996,7 +1003,7 @@ const FamilieApp: React.FC = () => {
                       )}
                     </div>
                   </div>
-                  {currentUser.role === 'child' && task.assignedTo === currentUser.id && (
+                  {task.assignedTo === currentUser.id && (
                     <button 
                       onClick={() => completeTask(task.id)}
                       style={styles.buttonSuccess}
