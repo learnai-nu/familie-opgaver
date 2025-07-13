@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/familie-opgaver/static/css/main.6e1f16d3.css",
-    "main.js": "/familie-opgaver/static/js/main.1d1f862c.js",
+    "main.js": "/familie-opgaver/static/js/main.031371f5.js",
     "index.html": "/familie-opgaver/index.html",
     "main.6e1f16d3.css.map": "/familie-opgaver/static/css/main.6e1f16d3.css.map",
-    "main.1d1f862c.js.map": "/familie-opgaver/static/js/main.1d1f862c.js.map"
+    "main.031371f5.js.map": "/familie-opgaver/static/js/main.031371f5.js.map"
   },
   "entrypoints": [
     "static/css/main.6e1f16d3.css",
-    "static/js/main.1d1f862c.js"
+    "static/js/main.031371f5.js"
   ]
 }
